@@ -27,6 +27,7 @@ Users imported: 48
 Runnning MySql script, converted for Windows from 'users.sql' => 'usersWinFromLinux.sql'
 
 User Logins added: 75
+
 Failed user Logins:
         user_id: 4      failure_reason: Invalid password
 MySql data imported and user logins checked successfully.

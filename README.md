@@ -1,5 +1,5 @@
 # BPhishTest
-This repo is designed as a test for wrangling bogus user data from csv, json and sql formats, as a preventative test. The code is written in C# with Microsoft Visual Studio Community 2022 as a Console App
+This repo is designed as a test for wrangling bogus user data from csv, json and sql formats, as a preventative test. The code is written in C# with Microsoft Visual Studio Community 2022 as a Console App.
 
 ## Dependencies
 - CsvHelpder 33.0.1
@@ -15,10 +15,15 @@ This repo is designed as a test for wrangling bogus user data from csv, json and
 The code will work to process the given raw data files in the RawDataFiles folder into Lists of User Classes for the csv and json files and into a MySql adatabase for the sql file.
 There are three data import and wrangling classes, all called from the Program.cs file for speed.
 
-## To do
+## To do with more time
 - All 3 sets of data could be converted to datasets or mapped using class mappings, as was done with the CsvUserClassMap method on CsvUser classses
 - Once data mapping is done, extract all data into csv.output.josn master class. The benefit of the json schema is that all fields can be null and the usefullness of rows would depend on the rules chosen for different requirements
 - Add a standard logger for error handling and reporting
+- Take all code out of Program except call to governor new class
+- Generate abstract Interfaces for classes and methods
+- Apply the 5 SOLID design pricniples: Separate classes and methods and add interfaces: Single responsibility principle, Liskov subsitution principle, Open/Closed principle, Interface segregation principle and Dependency Inversion Principle
+- Investigate whether the new .NET json wrangling libraries can do the json wrangling without using NewtonSoft.Json, which I have found preferable last time I did this
+
   
 ## Questions
  - Although C# can be used to ingest raw data quite quickly, for large files containing millions or even billions of records, I would use the Bulk Insert command funcionality available in most database providers. Bulk Insert is the fastest way to get data into tables in the first place. After the data is inserted with Bulk insert, a set of procedures and data cleansing exercises can be used to validate, report on and filter data.

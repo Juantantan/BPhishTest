@@ -17,7 +17,21 @@ There are three data import and wrangling classes, all called from the Program.c
 ## Questions
  - Although C# can be used to ingest raw data quite quickly, for large files containing millions or even billions of records, I would use the Bulk Insert command funcionality available in most database providers. Bulk Insert is the fastest way to get data into tables in the first place. After the data is inserted with Bulk insert, a set of procedures and data cleansing exercises can be used to validate, report on and filter data.
 
-- Where data contains errors (such as missing passwords or incorrect email formats), Sql scripts could be used to flag data rows where such errors occur. That would be my preferred method. An examle of this is shown in the ExecuteSql method of the MySqlImporter class. Here, the user_login_history table is queried, to select rows where 'failure_reason' is not NULL. To do this successfully, you would have to know what data is essential. A missing or incorrect password or failed login using the ingested and cleansed data could set a flag against the user, so that only viable users are extracted in teh final output.
+- Where data contains errors (such as missing passwords or incorrect email formats), Sql scripts could be used to flag data rows where such errors occur. That would be my preferred method. An examle of this is shown in the ExecuteSql method of the MySqlImporter class. Here, the user_login_history table is queried, to select rows where 'failure_reason' is not NULL. To do this successfully, you would have to know what data is essential. A missing or incorrect password or failed login using the ingested and cleansed data could set a flag against the user, so that only viable users are extracted in the final output.
+
+## Output from successfull run of code
+Importing Users from 'users.json'
+
+Users imported: 48
+
+Runnning MySql script, converted for Windows from 'users.sql' => 'usersWinFromLinux.sql'
+
+User Logins added: 75
+Failed user Logins:
+        user_id: 4      failure_reason: Invalid password
+MySql data imported and user logins checked successfully.
+
+CSV data imported and List containing 2500 CsvUser classes created successfully.
 
 
 

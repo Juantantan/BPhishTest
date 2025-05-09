@@ -30,7 +30,7 @@ namespace BoxPhishTest.Classes
             {
                 Server = "localhost",
                 UserID = "root",
-                Password = "C@rrotT0ps55_High",
+                Password = "KeyVault.BPhishUserPassword",
                 Database = "bfish",
             };
 
@@ -68,7 +68,7 @@ namespace BoxPhishTest.Classes
                 }
                 else
                 {
-                    Console.WriteLine("User Logins added: {0}", userLoginsInserted);
+                    Console.WriteLine("User Logins added: {0}\n", userLoginsInserted);
                 }
                 reader.Close();
             }

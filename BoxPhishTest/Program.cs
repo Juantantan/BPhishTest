@@ -40,12 +40,6 @@ else
     Console.WriteLine("CSV users data import failed.");
 }
 
-// We have created List objects of users from both the given Json and CSV raw data files
-// We have also created a set of tables in MySql from the users.sql script: [users], [user_login_history], [user_settings].
-// The data in our Lists and database doesn't match the csv.output.json file
-// By mapping the data from these sources into the output json format, where mappings and data are available, we can create a unified output
-//     for all our data and export it to a csv copnforming to the schema: 'csv.output.json'.
-// 
 
 
 

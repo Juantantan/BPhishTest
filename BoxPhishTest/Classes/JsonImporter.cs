@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using BPhishTest.Interfaces;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Schema;
 
@@ -7,7 +8,7 @@ namespace BoxPhishTest.Classes
     /// <summary>
     /// This class imports a Json file and validates it against the supplied Json schema: 'csv.output.json'.
     /// </summary>
-    internal class JsonImporter
+    internal class JsonImporter: IJsonImporter
     {
         string jsonSchemaPath = Path.Combine(Environment.CurrentDirectory, "Schemas", "csv.output.json");
         string jsonFilePath = Path.Combine(Environment.CurrentDirectory, "RawDataFiles", "users.json");
@@ -37,7 +38,7 @@ namespace BoxPhishTest.Classes
         /// <summary>
         /// Method to Deserialize Json string into JsonUser classes
         /// </summary>
-        private static List<JsonUser> ImportJson(string json)
+        public List<JsonUser> ImportJson(string json)
         {
             List<JsonUser> ?userList = JsonConvert.DeserializeObject<List<JsonUser>>(json);
             if (userList == null)
@@ -48,7 +49,7 @@ namespace BoxPhishTest.Classes
             return userList;
         }
 
-        private bool ValidateJson(string jsonString)
+        public bool ValidateJson(string jsonString)
         {
             /// <summary>
             /// Validates a supplied json string against given json schema: 'csv.output.json'

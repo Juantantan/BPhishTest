@@ -1,4 +1,4 @@
-﻿
+﻿using BPhishTest.Interfaces;
 using MySql.Data.MySqlClient;
 
 namespace BoxPhishTest.Classes
@@ -6,8 +6,9 @@ namespace BoxPhishTest.Classes
     /// <summary>
     /// This class imports a MySql database and table creation script, and then reads the user login history to check for failed logins.
     /// </summary>
-    internal class MySqlImporter
+    internal class MySqlImporter: IMySqlImporter
     {
+        // Path to the SQL file and the SQL query to check for failed logins
         string sqlFilePath = Path.Combine(Environment.CurrentDirectory, "RawDataFiles", "users.sql");
         string sqlFilePathWin = Path.Combine(Environment.CurrentDirectory, "RawDataFiles", "users_win.sql");
         const string failedLoginResultsSqlQuery = "SELECT user_id, failure_reason FROM bfish.user_login_history WHERE login_status = 'failed';";
@@ -113,7 +114,7 @@ namespace BoxPhishTest.Classes
         /// <summary>
         /// Method to convert the SQL file from Linux to Windows format.
         /// </summary>
-        private bool ConvertLinuxFormatSqlToWindows()
+        public bool ConvertLinuxFormatSqlToWindows()
         {
             // Delete formatted file if it exists
             if (File.Exists(sqlFilePathWin))

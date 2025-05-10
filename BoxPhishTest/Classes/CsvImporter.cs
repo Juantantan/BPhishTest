@@ -1,4 +1,5 @@
 ﻿using System.Globalization;
+using BPhishTest.Interfaces;
 using CsvHelper;
 
 namespace BoxPhishTest.Classes
@@ -6,7 +7,7 @@ namespace BoxPhishTest.Classes
     /// <summary>
     /// Class containing Method GetCsvUsers to generate List of CsvUser classes
     /// </summary>
-    internal class CsvImporter
+    internal class CsvImporter: ICsvImporter
     {
         string csvUsersPath = Path.Combine(Environment.CurrentDirectory, "RawDataFiles", "users.csv");
 

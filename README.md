@@ -22,11 +22,11 @@ There are three data import and wrangling classes, all called from the Program.c
 - Take all code out of Program except call to governor new class
 - Generate abstract Interfaces for classes and methods
 - Apply the 5 SOLID design pricniples: Separate classes and methods and add interfaces: Single responsibility principle, Liskov subsitution principle, Open/Closed principle, Interface segregation principle and Dependency Inversion Principle
-- Investigate whether the new .NET json wrangling libraries can do the json wrangling without using NewtonSoft.Json, which I have found preferable last time I did this
+- Investigate whether the new .NET json wrangling libraries can do the json wrangling without using NewtonSoft.Json, which I have found easier to use last time I did json manipulation
 
   
 ## Questions
- - Although C# can be used to ingest raw data quite quickly, for large files containing millions or even billions of records, I would use the Bulk Insert command funcionality available in most database providers. Bulk Insert is the fastest way to get data into tables in the first place. After the data is inserted with Bulk insert, a set of procedures and data cleansing exercises can be used to validate, report on and filter data.
+ - Although C# can be used to ingest raw data quite quickly, for large files containing millions or even billions of records, I would use the Bulk Insert command funcionality available in most database providers. Bulk Insert is the fastest way to get data into tables in the first place. After the data is inserted with Bulk insert, a set of procedures and data cleansing exercises can be used to validate, report on, re-map to schema and filter data.
 
 - Where data contains errors (such as missing passwords or incorrect email formats), Sql scripts could be used to flag data rows where such errors occur. That would be my preferred method. An examle of this is shown in the ExecuteSql method of the MySqlImporter class. Here, the user_login_history table is queried, to select rows where 'failure_reason' is not NULL. To do this successfully, you would have to know what data is essential. A missing or incorrect password or failed login using the ingested and cleansed data could set a flag against the user, so that only viable users are extracted in the final output.
 

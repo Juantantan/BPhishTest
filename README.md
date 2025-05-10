@@ -16,7 +16,7 @@ The code will work to process the given raw data files in the RawDataFiles folde
 There are three data import and wrangling classes, all called from the Program.cs file for speed.
 
 ## To do with more time
-- All 3 sets of data could be converted to datasets or mapped using class mappings, as was done with the CsvUserClassMap method on CsvUser classses
+- All 3 sets of data could be converted to datasets or mapped using class mappings, as was done with the CsvUserClassMap method in the CsvUser class
 - Once data mapping is done, extract all data into csv.output.josn master class. The benefit of the json schema is that all fields can be null and the usefullness of rows would depend on the rules chosen for different requirements
 - Add a standard logger for error handling and reporting
 - Take all code out of Program except call to governor new class

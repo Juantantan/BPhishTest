@@ -21,9 +21,8 @@ There are three data import and wrangling classes, all called from the Program.c
 - Add a standard logger for error handling and reporting
 - Take all code out of Program except call to governor new class
 - Generate inheritable Interfaces for classes and methods or generate abstract signature Interfaces for static classes and methods
-- Apply remaining SOLID design pricniples: Single responsibility principle (partially compliant), Liskov subsitution principle, Open/Closed principle, Interface segregation principle (partially compliant) and Dependency Inversion Principle
+- Apply remaining SOLID design pricniples: Single responsibility principle (partially compliant), Interface segregation principle (partially compliant)
 - Investigate whether the new .NET json wrangling libraries can do the json wrangling without using NewtonSoft.Json, which I have found easier to use
-
   
 ## Questions
  - Although C# can be used to ingest raw data quite quickly, for large files containing millions or even billions of records, I would use the Bulk Insert command funcionality available in most database providers. Bulk Insert is the fastest way to get data into tables in the first place. After the data is inserted with Bulk insert, a set of procedures and data cleansing exercises can be used to validate, report on, re-map to schema, filter and output data.

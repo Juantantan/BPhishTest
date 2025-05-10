@@ -40,8 +40,9 @@ Runnning MySql script, converted for Windows from 'users.sql' => 'usersWinFromLi
 User Logins added: 75
 
 Failed user Logins:
-        user_id: 4      
-        failure_reason: Invalid password
+- user_id: 4      
+- failure_reason: Invalid password
+
 MySql data imported and user logins checked successfully.
 
 CSV data imported and List containing 2500 CsvUser classes created successfully.

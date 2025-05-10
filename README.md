@@ -21,8 +21,8 @@ There are three data import and wrangling classes, all called from the Program.c
 - Add a standard logger for error handling and reporting
 - Take all code out of Program except call to governor new class
 - Generate inheritable Interfaces for classes and methods or generate abstract signature Interfaces for static classes and methods
-- Apply the 5 SOLID design pricniples: Separate classes and methods and add interfaces: Single responsibility principle, Liskov subsitution principle, Open/Closed principle, Interface segregation principle and Dependency Inversion Principle
-- Investigate whether the new .NET json wrangling libraries can do the json wrangling without using NewtonSoft.Json, which I have found easier to use last time I did json manipulation
+- Apply remaining SOLID design pricniples: Single responsibility principle (partially compliant), Liskov subsitution principle, Open/Closed principle, Interface segregation principle (partially compliant) and Dependency Inversion Principle
+- Investigate whether the new .NET json wrangling libraries can do the json wrangling without using NewtonSoft.Json, which I have found easier to use
 
   
 ## Questions

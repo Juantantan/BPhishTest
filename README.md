@@ -1,5 +1,5 @@
 # BPhishTest
-This repo is designed as a test for wrangling bogus user data from csv, json and sql formats, as a preventative test. The code is written in C# with Microsoft Visual Studio Community 2022 as a Console App
+This repo is designed as a test for wrangling bogus user data from csv, json and sql formats, as a preventative test. The code is written in C# with Microsoft Visual Studio Community 2022 as a Console App.
 
 ## Dependencies
 - CsvHelpder 33.0.1
@@ -15,13 +15,18 @@ This repo is designed as a test for wrangling bogus user data from csv, json and
 The code will work to process the given raw data files in the RawDataFiles folder into Lists of User Classes for the csv and json files and into a MySql adatabase for the sql file.
 There are three data import and wrangling classes, all called from the Program.cs file for speed.
 
-## To do
-- All 3 sets of data could be converted to datasets or mapped using class mappings, as was done with the CsvUserClassMap method on CsvUser classses
+## To do with more time
+- All 3 sets of data could be converted to datasets or mapped to the json schema output.csv.json using class mappings, as was done here only with the CsvUserClassMap method in the CsvUser class
 - Once data mapping is done, extract all data into csv.output.josn master class. The benefit of the json schema is that all fields can be null and the usefullness of rows would depend on the rules chosen for different requirements
 - Add a standard logger for error handling and reporting
+- Take all code out of Program except call to governor new class
+- Generate inheritable Interfaces for classes and methods or generate abstract signature Interfaces for static classes and methods
+- Apply the 5 SOLID design pricniples: Separate classes and methods and add interfaces: Single responsibility principle, Liskov subsitution principle, Open/Closed principle, Interface segregation principle and Dependency Inversion Principle
+- Investigate whether the new .NET json wrangling libraries can do the json wrangling without using NewtonSoft.Json, which I have found easier to use last time I did json manipulation
+
   
 ## Questions
- - Although C# can be used to ingest raw data quite quickly, for large files containing millions or even billions of records, I would use the Bulk Insert command funcionality available in most database providers. Bulk Insert is the fastest way to get data into tables in the first place. After the data is inserted with Bulk insert, a set of procedures and data cleansing exercises can be used to validate, report on and filter data.
+ - Although C# can be used to ingest raw data quite quickly, for large files containing millions or even billions of records, I would use the Bulk Insert command funcionality available in most database providers. Bulk Insert is the fastest way to get data into tables in the first place. After the data is inserted with Bulk insert, a set of procedures and data cleansing exercises can be used to validate, report on, re-map to schema, filter and output data.
 
 - Where data contains errors (such as missing passwords or incorrect email formats), Sql scripts could be used to flag data rows where such errors occur. That would be my preferred method. An examle of this is shown in the ExecuteSql method of the MySqlImporter class. Here, the user_login_history table is queried, to select rows where 'failure_reason' is not NULL. To do this successfully, you would have to know what data is essential. A missing or incorrect password or failed login using the ingested and cleansed data could set a flag against the user, so that only viable users are extracted in the final output.
 
@@ -35,7 +40,9 @@ Runnning MySql script, converted for Windows from 'users.sql' => 'usersWinFromLi
 User Logins added: 75
 
 Failed user Logins:
-        user_id: 4      failure_reason: Invalid password
+- user_id: 4      
+- failure_reason: Invalid password
+
 MySql data imported and user logins checked successfully.
 
 CSV data imported and List containing 2500 CsvUser classes created successfully.

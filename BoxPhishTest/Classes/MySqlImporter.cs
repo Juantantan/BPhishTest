@@ -3,23 +3,17 @@ using MySql.Data.MySqlClient;
 
 namespace BoxPhishTest.Classes
 {
-    /// <summary>
-    /// This class imports a MySql database and table creation script, and then reads the user login history to check for failed logins.
-    /// </summary>
     internal class MySqlImporter: IMySqlImporter
     {
         // Path to the SQL file and the SQL query to check for failed logins
-        string sqlFilePath = Path.Combine(Environment.CurrentDirectory, "RawDataFiles", "users.sql");
-        string sqlFilePathWin = Path.Combine(Environment.CurrentDirectory, "RawDataFiles", "users_win.sql");
+        static readonly string sqlFilePath = Path.Combine(Environment.CurrentDirectory, "RawDataFiles", "users.sql");
+        static readonly string sqlFilePathWin = Path.Combine(Environment.CurrentDirectory, "RawDataFiles", "users_win.sql");
         const string failedLoginResultsSqlQuery = "SELECT user_id, failure_reason FROM bfish.user_login_history WHERE login_status = 'failed';";
 
-        /// <summary>
-        /// adynchronous boolean method to generate tables in bfish and then query user login attempts, 
-        /// </summary>
         public async Task<bool> ExecuteSql()
         {
             bool isSuccess = false;
-            bool LinuxToWinSuccess = ConvertLinuxFormatSqlToWindows();
+            bool LinuxToWinSuccess = ConvertLinuxFormatSqlToWindows(sqlFilePath);
             if (LinuxToWinSuccess == false)
             {
                 Console.WriteLine("Error converting SQL file from Linux to Windows format.");
@@ -111,10 +105,8 @@ namespace BoxPhishTest.Classes
 
             return isSuccess = true; ;
         }
-        /// <summary>
-        /// Method to convert the SQL file from Linux to Windows format.
-        /// </summary>
-        public bool ConvertLinuxFormatSqlToWindows()
+        
+        public bool ConvertLinuxFormatSqlToWindows(string path)
         {
             // Delete formatted file if it exists
             if (File.Exists(sqlFilePathWin))

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CsvHelper.Configuration;
+﻿using CsvHelper.Configuration;
 
 namespace BoxPhishTest.Classes
 {
@@ -13,7 +8,8 @@ namespace BoxPhishTest.Classes
         public string user_name { get; set; }
         public DateTime date_registered { get; set; }
         public DateTime last_login { get; set; }
-        public string real_name { get; set; }
+        public string family_name { get; set; }
+        public string first_name { get; set; }
         public string password { get; set; }
         public string password_hash { get; set; }
         public string email_address { get; set; }
@@ -26,6 +22,11 @@ namespace BoxPhishTest.Classes
         public string secret_answer { get; set; }
     }
 
+    /// <summary>  
+    /// Class to map user data to output fields (schema matches where possible) from Csv file  
+    /// NB: The Mappings for first_name and family_name use the real_name in the raw csv and splits that into first and family name
+    ///     There appears to be a better way to do this using the CsvHelper library, but this is a quick solution
+    /// </summary>  
     public class CsvUserClassMap : ClassMap<CsvUser>
     {
         public CsvUserClassMap()
@@ -34,7 +35,19 @@ namespace BoxPhishTest.Classes
             Map(m => m.user_name).Name("user_name");
             Map(m => m.date_registered).Name("date_registered");
             Map(m => m.last_login).Name("last_login");
-            Map(m => m.real_name).Name("real_name");
+
+            Map(m => m.first_name).Convert(args =>
+            {
+                var realName = args.Row.GetField<string>("real_name");
+                return realName.Split(" ")[0];
+            });
+
+            Map(m => m.family_name).Convert(args =>
+            {
+                var realName = args.Row.GetField<string>("real_name");
+                return realName.Split(" ").Length > 1 ? realName.Split(" ")[1] : string.Empty;
+            });
+
             Map(m => m.password).Name("password");
             Map(m => m.password_hash).Name("password_hash");
             Map(m => m.email_address).Name("email_address");
@@ -47,5 +60,4 @@ namespace BoxPhishTest.Classes
             Map(m => m.secret_answer).Name("secret_answer");
         }
     }
-
 }

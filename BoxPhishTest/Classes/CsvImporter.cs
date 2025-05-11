@@ -4,16 +4,10 @@ using CsvHelper;
 
 namespace BoxPhishTest.Classes
 {
-    /// <summary>
-    /// Class containing Method GetCsvUsers to generate List of CsvUser classes
-    /// </summary>
     internal class CsvImporter: ICsvImporter
     {
-        string csvUsersPath = Path.Combine(Environment.CurrentDirectory, "RawDataFiles", "users.csv");
+        static readonly string csvUsersPath = Path.Combine(Environment.CurrentDirectory, "RawDataFiles", "users.csv");
 
-        /// <summary>
-        /// Import CSV data from file 'users.csv' into List of CsvUser classes, mapped to CsvUserClassMap using CsvHelper library
-        /// </summary>
         public List<CsvUser>GetCsvUsers()
         {
             using (var reader = new StreamReader(Path.Combine(Directory.GetCurrentDirectory(), csvUsersPath)))
@@ -33,8 +27,10 @@ namespace BoxPhishTest.Classes
                     else
                     {
                         csvUsers.Add(csv.GetRecord<CsvUser>());
+
                     }
                 }
+
                 return csvUsers;
             }
         }

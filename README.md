@@ -19,7 +19,7 @@ There are three data import and wrangling classes, all called from the Program.c
 - All 3 sets of data could be converted to datasets or mapped to the json schema output.csv.json using class mappings, as was done here only with the CsvUserClassMap method in the CsvUser class
 - Once data mapping is done, extract all data into csv.output.josn master class. The benefit of the json schema is that all fields can be null and the usefullness of rows would depend on the rules chosen for different requirements
 - Add a standard logger for error handling and reporting
-- Take all code out of Program except call to governor new class
+- Take all code out of Program except call to new governor class
 - Generate inheritable Interfaces for classes and methods or generate abstract signature Interfaces for static classes and methods
 - Apply remaining SOLID design pricniples: Single responsibility principle (partially compliant), Interface segregation principle (partially compliant)
 - Investigate whether the new .NET json wrangling libraries can do the json wrangling without using NewtonSoft.Json, which I have found easier to use

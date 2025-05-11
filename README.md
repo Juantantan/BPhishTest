@@ -13,7 +13,7 @@ This repo is designed as a test for wrangling bogus user data from csv, json and
 
 ## Notes
 - The code will work to process the 3 supplied raw data files in the RawDataFiles folder into Lists of User Classes for the csv and json files and into a MySql database for the sql file. There are three data import and wrangling classes, all called from the Program.cs file for speed.
-- I spent upwards of 5 hours in total and with hindsight, it would have been better to build a pseudocode framework for the complete solution in 2 hours and then created viable code with any spare time.
+- I spent upwards of 5 hours in total and with hindsight, it would have been better to build a pseudocode framework for the complete solution in 2 hours and then create as much viable code as could be done with remaining time allocation.
 
 ## To do with more time
 - All 3 sets of data could be mapped to the json schema 'output.csv.json' using class mappings, as was done here only with the CsvUserClassMap method in the CsvUser class for 'first_name' and 'family_name' fields, directly mapped from the raw 'real_name' field

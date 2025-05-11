@@ -1,5 +1,5 @@
 # BPhishTest
-This repo is designed as a test for wrangling bogus user data from csv, json and sql formats, as a preventative test. The code is written in C# with Microsoft Visual Studio Community 2022 as a Console App.
+This repo is designed as a test for wrangling made-up user data from csv, json and sql formats, as a preventative test. The code is written in C# with Microsoft Visual Studio Community 2022 as a Console App.
 
 ## Dependencies
 - CsvHelpder 33.0.1
@@ -23,6 +23,7 @@ This repo is designed as a test for wrangling bogus user data from csv, json and
 - Apply remaining SOLID design pricniples: Single responsibility principle (partially compliant), Interface segregation principle (partially compliant), Liskov Substitution principle
 - Investigate whether the new .NET json wrangling libraries can do the json wrangling without using the NuGet NewtonSoft.Json library, which wsa found to be easier to use previously
 - Create Enum for Raw input file types and use overload methods in a single data processor class, depending on the enum passed from the governor
+- The test could be done well using VS Code in Linux. The MySql script file is Linux formatted and VS Code is more lightweight than Visual Studio and quite sufficient for this task
   
 ## Questions
  - Although C# can be used to ingest raw data quite quickly, for large files containing millions or even billions of records, I would use the Bulk Insert command funcionality available in most database providers. Bulk Insert is the fastest way to get data into tables in the first place. After the data is inserted with Bulk insert, a set of procedures and data cleansing exercises can be used to validate, report on, re-map to schema, filter and output data.

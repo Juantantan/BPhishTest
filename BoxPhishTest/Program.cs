@@ -42,6 +42,8 @@ else
 {
     Console.WriteLine("CSV users data import failed.");
 }
+
+// Generate CSV output from CsvUser and JsonUser lists
 Success = outputMapper.GenerateOutputFromUser(csvUsers);
 if (Success)
 {

@@ -1,4 +1,5 @@
 ﻿using BoxPhishTest.Classes;
+using BPhishTest.Classes;
 
 /// <summary>
 /// For speed, main data wrangling classes are called directly from here. We are not using SOLID design methodology or interface classes
@@ -7,6 +8,8 @@
 /// </summary>
 
 bool Success = false;
+
+OutputMapper outputMapper = new OutputMapper();
 
 // Import and validate JSON data against schemna
 Console.WriteLine($"Importing Users from 'users.json'\n");
@@ -38,6 +41,24 @@ if (csvUserCount > 0)
 else
 {
     Console.WriteLine("CSV users data import failed.");
+}
+Success = outputMapper.GenerateOutputFromUser(csvUsers);
+if (Success)
+{
+    Console.WriteLine($"CSV output generated successfully from CsvUser List.\n");
+}
+else
+{
+    Console.WriteLine("CSV output generation from CsvUser List failed.\n");
+}
+Success = outputMapper.GenerateOutputFromUser(users);
+if (Success)
+{
+    Console.WriteLine($"CSV output generated successfully from JsonUser List.\n");
+}
+else
+{
+    Console.WriteLine("CSV output generation from users failed.\n");
 }
 
 

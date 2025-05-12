@@ -1,5 +1,5 @@
 # BPhishTest
-This repo is designed as a test for wrangling bogus user data from csv, json and sql formats, as a preventative test. The code is written in C# with Microsoft Visual Studio Community 2022 as a Console App.
+This repo is designed as a test for wrangling made-up user data from csv, json and sql formats, as a preventative test. The code is written in C# with Microsoft Visual Studio Community 2022 as a Console App.
 
 ## Dependencies
 - CsvHelpder 33.0.1
@@ -7,22 +7,23 @@ This repo is designed as a test for wrangling bogus user data from csv, json and
 - NewtonSoft.json 13.0.3
 
 ## Helper webs
-- Json class inferance was done using [JsonToC#](https://json2csharp.com/)
+- Json class inferance was done using automated functionality from [JsonToC#](https://json2csharp.com/)
 - Csv Mapping code extracted and modified from [Bradley Wells Csv Mapping and Import](https://wellsb.com/csharp/learn/read-csv-dotnet-csvhelper)
 
 
 ## Notes
-The code will work to process the given raw data files in the RawDataFiles folder into Lists of User Classes for the csv and json files and into a MySql adatabase for the sql file.
-There are three data import and wrangling classes, all called from the Program.cs file for speed.
+- The code will work to process the 3 supplied raw data files in the RawDataFiles folder into Lists of User Classes for the csv and json files and into a MySql database for the sql file. There are three data import and wrangling classes, all called from the Program.cs file for speed.
+- I spent upwards of 5 hours in total and with hindsight, it would have been better to build a pseudocode framework for the complete solution in 2 hours and then create as much viable code as could be done with remaining time allocation.
 
 ## To do with more time
-- All 3 sets of data could be converted to datasets or mapped to the json schema output.csv.json using class mappings, as was done here only with the CsvUserClassMap method in the CsvUser class
-- Once data mapping is done, extract all data into csv.output.josn master class. The benefit of the json schema is that all fields can be null and the usefullness of rows would depend on the rules chosen for different requirements
+- All 3 sets of data could be mapped to the json schema 'output.csv.json' using class mappings, as was done here only with the CsvUserClassMap method in the CsvUser class for 'first_name' and 'family_name' fields, directly mapped from the raw 'real_name' field
+- Once data mapping is done, extract all data into csv.output.josn master class. The benefit of a json schema is that all fields can be null and the usefullness of rows would depend on the rules chosen for different requirements
 - Add a standard logger for error handling and reporting
-- Take all code out of Program except call to governor new class
-- Generate inheritable Interfaces for classes and methods or generate abstract signature Interfaces for static classes and methods
-- Apply remaining SOLID design pricniples: Single responsibility principle (partially compliant), Interface segregation principle (partially compliant)
-- Investigate whether the new .NET json wrangling libraries can do the json wrangling without using NewtonSoft.Json, which I have found easier to use
+- Take all code out of Program except call to new governor class
+- Apply remaining SOLID design pricniples: Single responsibility principle (partially compliant), Interface segregation principle (partially compliant), Liskov Substitution principle
+- Investigate whether the new .NET json wrangling libraries can do the json wrangling without using the NuGet NewtonSoft.Json library, which wsa found to be easier to use previously
+- Create Enum for Raw input file types and use overload methods in a single data processor class, depending on the enum passed from the governor
+- The test could be done well using VS Code in Linux. The MySql script file is Linux formatted and VS Code is more lightweight than Visual Studio and quite sufficient for this task
   
 ## Questions
  - Although C# can be used to ingest raw data quite quickly, for large files containing millions or even billions of records, I would use the Bulk Insert command funcionality available in most database providers. Bulk Insert is the fastest way to get data into tables in the first place. After the data is inserted with Bulk insert, a set of procedures and data cleansing exercises can be used to validate, report on, re-map to schema, filter and output data.
